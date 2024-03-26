@@ -13,6 +13,49 @@ bin-release/
 *.ipa
 *.apk
 
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+ 
+#!用于指定 Git 版本控制系统应该忽略的文件和目录.这对于减少不必要的文件跟踪,减小仓库大小和提高效率非常有帮助.
+# -------------------- 数据目录  及其它目录 --------------------
+# data/* 忽略 data 目录下的所有文件.
+# 但不忽略 data/demo 目录.
+figures/
+!figures/3D_roadnetwork_on_aerial_map.png
+
+# -------------------- Python 文件 --------------------
+# Byte-compiled / optimized / DLL files
+# __pycache__/ 忽略 Python 编译生成的缓存目录.
+# ` *.py[cod]` 忽略 .pyc,.pyo（编译后的 Python 文件）,.pyd（Python DLL文件）.
+# `*$py.class` 忽略由 Jython 生成的类文件.
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+# matlab自动保存文件
+*.asv
+
+# -------------------- C 扩展 C extensions --------------------
+*.so
+
+# -------------------- Distribution / packaging 分发/打包 --------------------
+# .Python 忽略虚拟环境的 Python 解释器.
+# 后面的目录（如 build/, dist/ 等）通常是 Python 打包工具（如 setuptools 或 wheel）生成的目录,包含了项目构建和分发的临时文件.
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+ 
