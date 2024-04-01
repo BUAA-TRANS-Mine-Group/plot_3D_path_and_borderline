@@ -1,18 +1,3 @@
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
-
-# Other files and folders
-.settings/
-
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
-
  
 #!用于指定 Git 版本控制系统应该忽略的文件和目录.这对于减少不必要的文件跟踪,减小仓库大小和提高效率非常有帮助.
 # -------------------- 数据目录  及其它目录 --------------------
@@ -20,6 +5,8 @@ bin-release/
 # 但不忽略 data/demo 目录.
 figures/
 !figures/3D_roadnetwork_on_aerial_map.png
+!3D_roadnetwork_on_aerial_map.
+
 
 # -------------------- Python 文件 --------------------
 # Byte-compiled / optimized / DLL files
@@ -44,18 +31,5 @@ build/
 develop-eggs/
 dist/
 downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-pip-wheel-metadata/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+
  
