@@ -15,14 +15,14 @@ jsondata_semantic_map = jsondecode(json_semantic_map);
 figure;
 
 % 读取底图
-bit_rgb.img =  imread(bitmap_rgb,'png');
+bit_rgb.img = imread(bitmap_rgb, 'png');
 bit_rgb.size = size(bit_rgb.img);
-bit_rgb.height =bit_rgb.size(1);
-bit_rgb.width =bit_rgb.size(2);
+bit_rgb.height = bit_rgb.size(1);
+bit_rgb.width = bit_rgb.size(2);
 %% 指定绘制的x和y范围
 bit_rgb.x_range = jsondata_semantic_map.bitmap_rgb_PNG.UTM_info.local_x_range;
-bit_rgb.y_range =  jsondata_semantic_map.bitmap_rgb_PNG.UTM_info.local_y_range;
-bit_rgb.img_y_reverse = flipud(bit_rgb.img);%围绕水平轴按上下方向翻转其各行。
+bit_rgb.y_range = jsondata_semantic_map.bitmap_rgb_PNG.UTM_info.local_y_range;
+bit_rgb.img_y_reverse = flipud(bit_rgb.img); %围绕水平轴按上下方向翻转其各行。
 % 获取底图大小和范围
 xRange = bit_rgb.x_range;
 yRange = bit_rgb.y_range;
@@ -45,6 +45,7 @@ end
 
 % 为每个reference_path设置颜色
 colors = lines(length(jsondata_semantic_map.reference_path));
+
 for i_path = 1:length(jsondata_semantic_map.reference_path)
     points_XYYawZ = jsondata_semantic_map.reference_path(i_path).waypoints;
     X = points_XYYawZ(:, 1);
