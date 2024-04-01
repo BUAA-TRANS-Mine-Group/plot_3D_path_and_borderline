@@ -1,5 +1,3 @@
- 
-
 %% 输入
 % 编写m代码实现功能：
 % 1）读取 bitmap_mask 黑白栅格地图信息；
@@ -22,17 +20,17 @@
 % 4) 首先，对栅格bitmap_mask 可行驶道路部分（储存为0）进行三维空间建模：
 % 对每个 bitmap_mask 可行驶部分（储存为0，白色区域）的栅格，在xy平面内 匹配所有参考路径的最近点，将该点的海拔高度信息作为栅格的高度信息；
 % 然后，对所有可行驶区域栅格的海拔高度信息进行平滑处理，得到山路高地起伏平滑的建模；
-% 
-% 
+%
+%
 % 5）如果我想要实现更加高级的功能：通过读取前后两个栅格 获取运动的坡度信息，应该如何进行；
-% 
-% 
+%
+%
 % jsondata_semantic_map
-% 
-% jsondata_semantic_map = 
-% 
+%
+% jsondata_semantic_map =
+%
 %   包含以下字段的 struct:
-% 
+%
 %                       version: '1.5'
 %                 map_make_date: '2023-12-16'
 %             infomation_of_map: 'modify reference path and borderline of jiangtong map using matlab'
@@ -53,11 +51,11 @@
 %                reference_path: [196×1 struct]
 %                    borderline: [144×1 struct]
 % jsondata_semantic_map.reference_path
-% 
-% ans = 
-% 
+%
+% ans =
+%
 %   包含以下字段的 196×1 struct 数组:
-% 
+%
 %     token
 %     type
 %     link_polygon_tokens
@@ -68,9 +66,9 @@
 %     is_end_blocked
 %     waypoint_sampling_interval_meter
 %     waypoints
-% 
+%
 %     waypoints 储存大量的路径点（每隔0.2米一个）的[x,y,yaw,height,slope]
- %%
+%%
 clear;
 close all;
 
@@ -79,29 +77,28 @@ bitmap_mask_path = 'D:\BUAA_PhD\A1_Project\20230725-onsite比赛第二届非结�
 bitmap_rgb = 'D:\BUAA_PhD\A1_Project\20230725-onsite比赛第二届非结构化道路赛道\onsite-mine非结构赛题\maps\bitmap\guangdong_dapai_bitmap_rgb.png';
 semantic_map_path = "D:\BUAA_PhD\A1_Project\20230725-onsite比赛第二届非结构化道路赛道\onsite-mine非结构赛题\maps\semantic_map\guangdong_dapai_semantic_map.json";
 
-
 %% 1) 读取语义地图信息
 json_semantic_map = fileread(semantic_map_path);
 jsondata_semantic_map = jsondecode(json_semantic_map);
 
-
 %% 2) 读取 bitmap_mask 黑白栅格地图信息
 % bitmap_mask = imread(bitmap_mask_path);
 % bitmap_mask = bitmap_mask(:,:,1); % 确保bitmap_mask是二维数组
-bit_mask.img =  imread(bitmap_mask_path,'png');
-bit_mask.size =size(bit_mask.img);
-bit_mask.height =bit_mask.size(1);
-bit_mask.width =bit_mask.size(2);
+bit_mask.img = imread(bitmap_mask_path, 'png');
+bit_mask.size = size(bit_mask.img);
+bit_mask.height = bit_mask.size(1);
+bit_mask.width = bit_mask.size(2);
 % 指定绘制的x和y范围
 bit_mask.x_range = jsondata_semantic_map.bitmap_mask_PNG.UTM_info.local_x_range;
 bit_mask.y_range = jsondata_semantic_map.bitmap_mask_PNG.UTM_info.local_y_range;
-bit_mask.img_y_reverse = flipud(bit_mask.img);%围绕水平轴按上下方向翻转其各行。
-bit_mask.scale_PixelPerMeter=jsondata_semantic_map.bitmap_mask_PNG.scale_PixelPerMeter;
-bit_mask.scale_MeterPerPixel=jsondata_semantic_map.bitmap_mask_PNG.scale_MeterPerPixel;
+bit_mask.img_y_reverse = flipud(bit_mask.img); %围绕水平轴按上下方向翻转其各行。
+bit_mask.scale_PixelPerMeter = jsondata_semantic_map.bitmap_mask_PNG.scale_PixelPerMeter;
+bit_mask.scale_MeterPerPixel = jsondata_semantic_map.bitmap_mask_PNG.scale_MeterPerPixel;
 fprintf('###log### 读取地图数据\n');
 
 %%  3）两种实现途径 :  每个栅格 获取高程信息；
 flag_method = 1;
+
 switch flag_method
     case 1
         % 两种实现途径1/2: 每个栅格点去匹配路径中的高程 ；totalPixels =273130265
@@ -111,18 +108,12 @@ switch flag_method
         method_2_Spread_Filling.m
 end
 
-  
 %%  3.2）可视化高度矩阵
 surf(heightMap);
 title('3D Terrain Model');
 xlabel('X');
 ylabel('Y');
 zlabel('Height');
-
-
-
-
- 
 
 %% 4）对高度信息进行平滑处理（可选）
 % 你可以使用MATLAB内置函数如`imgaussfilt`进行高度信息的平滑处理
