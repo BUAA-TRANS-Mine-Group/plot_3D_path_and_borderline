@@ -51,7 +51,7 @@ rgb航测图作为底图，绘制三维参考路径、三维边界地图；
 slope=MAP(point1[x1,y1],point2[x2,y2])
 ```
 
-参考资料：
+# 参考资料：
 
 - 运动规划领域的障碍物符号距离场, Signed Distance Field (SDF)；
 
