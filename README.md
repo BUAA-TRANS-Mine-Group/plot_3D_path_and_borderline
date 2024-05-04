@@ -50,6 +50,34 @@ rgb航测图作为底图，绘制三维参考路径、三维边界地图；
 ```
 slope=MAP(point1[x1,y1],point2[x2,y2])
 ```
+# python env
+
+ 
+- 使用 conda 建立虚拟环境（python3.12 测试通过）
+
+```bash
+conda create -n mine_height python=3.12
+```
+
+- 激活虚拟环境
+
+```bash
+conda activate onsite_mine
+```
+
+- 通过 pip 安装 devkit 的 python 依赖包(packages)
+
+打开工程如下目录 `devkit/setup/requirements.txt`,安装依赖包.
+
+```bash
+pip install -r setup/requirements.txt
+
+# 加快速度(使用国内镜像源)
+pip install -r setup/requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
+
+### 
 
 # 参考资料：
 

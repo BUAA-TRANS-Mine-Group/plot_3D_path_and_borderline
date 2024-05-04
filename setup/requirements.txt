@@ -1,0 +1,15 @@
+# note:在撰写 requirements.txt 文件时，最佳实践是指定库的版本范围，而不是固定的版本号。
+# !原环境可能污染,重新创建最新的python环境
+# pip install  matplotlib numpy pandas shapely -i https://pypi.tuna.tsinghua.edu.cn/simple
+#! pip install  -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+# typing>=3.7.0  # 如果项目运行在 Python 3.7 或更高版本，这个库是不必要的
+# ######### 不指定版本 #########
+matplotlib 
+numpy   
+
+# 指定版本,其它版本兼容性待测试
+tqdm>=4.0.0  # 指定起始版本,以确保基本功能
+# scipy>=1.11.2
+# six==1.16.0
+# sortedcontainers==2.4.0
+rasterio # rasterio 是一个用于读取、写入、转换和分析栅格地理空间数据的 Python 库。
