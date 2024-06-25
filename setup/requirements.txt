@@ -1,0 +1,16 @@
+# note:在撰写 requirements.txt 文件时,最佳实践是指定库的版本范围,而不是固定的版本号。
+# 这样做可以在确保依赖库兼容性的同时,提供一定的灵活性,避免过于严格的版本约束导致的兼容性问题。
+matplotlib>=3.5.2 
+numpy>=1.21.1  # Used widely,only from this version numpy.typing.NDArray is supported
+# typing>=3.7.0  # 如果项目运行在 Python 3.7 或更高版本,这个库是不必要的
+# pandas>=1.0.0  # 指定一个较新的起始版本,以确保功能和性能
+Pillow>6.2.1   # Used widely to render images;PIL库
+descartes>=1.0.0 
+tqdm>=4.0.0  # 指定起始版本,以确保基本功能
+Shapely<=1.8.5 # nuscenes
+imageio>=2.0.0  # 生成gif
+scipy>=1.11.4 # 用于图像滤波
+# Cython>=0.29.0  # 支持  Cython 可以让我们方便地:用 Python 的语法混合编写 Python 和 C/C++ 代码,提升 Python 速度;调用 C/C++ 代码
+# numpydoc>=1.0.0 # 支持  Cython 可以让我们方便地:用 Python 的语法混合编写 Python 和 C/C++ 代码,提升 Python 速度;调用 C/C++ 代码
+# casadi>=3.0.0  # Used for optimization solving
+# control>=0.8.0,<=0.9.1  # Used for LQR controller synthesis,如果需要特定版本,可以指定一个范围
